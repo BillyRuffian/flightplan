@@ -1,6 +1,7 @@
-%h1 Listing projects
+- content_for :section do
+  %h1 Listing projects
 
-%table
+%table.table
   %thead
     %tr
       %th Name
@@ -11,7 +12,7 @@
       %th
       %th
 
-  %tbody
+  %tbody.table-group-divider
     - @projects.each do |project|
       %tr
         %td= project.name
@@ -20,7 +21,7 @@
         %td= project.end_date
         %td= link_to 'Show', project
         %td= link_to 'Edit', edit_project_path(project)
-        %td= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Destroy', project, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }
 
 %br
 

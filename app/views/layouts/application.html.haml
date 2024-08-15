@@ -1,5 +1,5 @@
 !!!
-%html
+%html.h-100
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title= content_for(:title) || "Flightplan"
@@ -14,5 +14,22 @@
     %link{:href => "/icon.png", :rel => "apple-touch-icon"}/
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
-  %body
-    = yield
+
+  %body.d-flex.flex-column.h-100.bg-light
+    %header.p-3.mb-3.border-bottom.bg-white
+      = render partial: 'shared/main_navigation'
+
+    %main.flex-shrink-0
+      = render partial: 'shared/section_title', locals: {section: yield(:section)}
+      .container
+        = yield
+
+    %footer.footer.py-3.mt-auto.bg-white.border-top
+      .container
+        .d-flex
+          %div
+            &copy;
+            = link_to 'Nigel Brookes-Thomas', 'https://github.com/BillyRuffian/dna'
+            = Time.now.year
+          .ms-auto
+            Here comes the aeroplane!
