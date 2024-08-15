@@ -7,13 +7,11 @@ export default class extends Controller {
 
   static values = {
     labels: Array,
-    series: Array,
+    dates: Array,
   };
 
   connect() {
     console.log("Connected to timeline controller");
-    console.log(this.labelsValue);
-    console.log(this.seriesValue);
   }
 
   initialize() {
@@ -22,14 +20,70 @@ export default class extends Controller {
   }
 
   get chartOptions() {
+    var series_data = this.labelsValue.map((label, index) => ({
+      x: label,
+      y: this.datesValue[index].map(date => new Date(date).getTime())
+    }));
+
     return {
+      series: [
+        {
+          data: series_data
+        }
+      ],
       chart: {
-        type: "pie",
-        height: "400px",
-        width: "400px",
+        height: (100 * this.labelsValue.length) + 20,
+        type: 'rangeBar'
       },
-      series: this.seriesValue,
-      labels: this.labelsValue,
+      plotOptions: {
+        bar: {
+          horizontal: true
+        }
+      },
+      xaxis: {
+        type: 'datetime',
+        min: new Date().getTime()
+      },
+      annotations: {
+        xaxis: [
+          {
+            x: new Date().getTime(),
+            strokeDashArray: 3,
+            borderColor: "#f00",
+            label: {
+              borderColor: "#775DD0",
+              style: {
+                color: "#fff",
+                background: "#775DD0"
+              },
+              text: ''
+            }
+          }
+        ]
+
+      }
     };
   }
 }
+
+
+
+// annotations: {
+//   xaxis: [
+//     {
+//       x: new Date().getTime(),
+//       strokeDashArray: 0,
+//       borderColor: "#775DD0",
+//       label: {
+//         borderColor: "#775DD0",
+//         style: {
+//           color: "#fff",
+//           background: "#775DD0"
+//         },
+//         text: "Today"
+//       }
+//     }
+//   ]
+
+// }
+// };
