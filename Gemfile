@@ -59,3 +59,6 @@ group :test do
 end
 
 gem "kamal", "~> 1.8"
+
+gem "haml-rails", "~> 2.1"
+gem "erb2haml", "~> 0.1.5"
