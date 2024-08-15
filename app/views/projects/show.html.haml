@@ -3,6 +3,12 @@
 
 %p#notice= notice
 
+-# range_bar_series = [{name: 'Series A', data: { 'A' => [1,5] }}, {name: 'Series B', data: { 'B' => [2,4] }}, {name: 'Series C', data: { 'C' => [3,3] }}]
+-#= range_bar_chart(range_bar_series)
+
+%div{ data: { controller: 'timeline', timeline_labels_value: ['a', 'b', 'x'] , timeline_series_value: [20,10,60] } }
+  %div{ data: { timeline_target: 'chart' } }
+
 %p
   %b Name:
   = @project.name

@@ -76,6 +76,7 @@ GEM
     annotate (3.2.0)
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
+    apexcharts (0.2.0)
     ast (2.4.2)
     base64 (0.2.0)
     bcrypt (3.1.20)
@@ -121,6 +122,8 @@ GEM
     erubi (1.13.0)
     erubis (2.7.0)
     globalid (1.2.1)
+      activesupport (>= 6.1)
+    groupdate (6.4.0)
       activesupport (>= 6.1)
     haml (6.3.0)
       temple (>= 0.8.2)
@@ -384,6 +387,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  apexcharts (~> 0.2.0)
   bootsnap
   brakeman
   capybara
@@ -391,6 +395,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9)
   erb2haml (~> 0.1.5)
+  groupdate (~> 6.4)
   haml-rails (~> 2.1)
   importmap-rails
   jbuilder
