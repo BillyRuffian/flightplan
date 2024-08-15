@@ -68,6 +68,8 @@ Rails.application.configure do
   # config.active_job.queue_adapter = :resque
   # config.active_job.queue_name_prefix = "flightplan_production"
 
+  config.action_mailer.default_url_options = { host: 'flightplan.glorious.io', port: 443 }
+
   # Disable caching for Action Mailer templates even if Action Controller
   # caching is enabled.
   config.action_mailer.perform_caching = false
