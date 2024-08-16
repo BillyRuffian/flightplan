@@ -19,7 +19,7 @@
 #
 #  project_id  (project_id => projects.id)
 #
-require "test_helper"
+require 'test_helper'
 
 class MilestoneTest < ActiveSupport::TestCase
   # test "the truth" do
