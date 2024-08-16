@@ -22,27 +22,30 @@ export default class extends Controller {
   get chartOptions() {
     var series_data = this.labelsValue.map((label, index) => ({
       x: label,
-      y: this.datesValue[index].map(date => new Date(date).getTime())
+      y: this.datesValue[index].map((date) => new Date(date).getTime()),
     }));
 
     return {
       series: [
         {
-          data: series_data
-        }
+          data: series_data,
+        },
       ],
       chart: {
-        height: (100 * this.labelsValue.length) + 20,
-        type: 'rangeBar'
+        height: 100 * this.labelsValue.length + 20,
+        type: "rangeBar",
+        animations: {
+          enabled: false,
+        },
       },
       plotOptions: {
         bar: {
-          horizontal: true
-        }
+          horizontal: true,
+        },
       },
       xaxis: {
-        type: 'datetime',
-        min: new Date().getTime()
+        type: "datetime",
+        min: new Date().getTime(),
       },
       annotations: {
         xaxis: [
@@ -54,19 +57,16 @@ export default class extends Controller {
               borderColor: "#775DD0",
               style: {
                 color: "#fff",
-                background: "#775DD0"
+                background: "#775DD0",
               },
-              text: ''
-            }
-          }
-        ]
-
-      }
+              text: "",
+            },
+          },
+        ],
+      },
     };
   }
 }
-
-
 
 // annotations: {
 //   xaxis: [
