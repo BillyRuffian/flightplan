@@ -13,7 +13,7 @@ class MilestonesController < ApplicationController
 
   # GET /milestones/new
   def new
-    @milestone = @project.milestones.new
+    @milestone = @project.milestones.new(start_date: @project.start_date, end_date: @project.end_date)
   end
 
   # GET /milestones/1/edit
