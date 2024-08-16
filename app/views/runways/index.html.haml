@@ -1,0 +1,8 @@
+- content_for :section do
+  Runway
+
+%p#notice= notice
+
+
+%div.bg-white.border{ data: { controller: 'timeline', turbo_cache: false, timeline_labels_value: @projects.map(&:name) , timeline_dates_value: @projects.map { |p| iso_date_range(p) } } }
+  %div{ data: { timeline_target: 'chart' } }

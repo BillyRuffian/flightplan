@@ -22,10 +22,15 @@ export default class extends Controller {
   }
 
   get chartOptions() {
-    var series_data = this.labelsValue.map((label, index) => ({
+    const series_data = this.labelsValue.map((label, index) => ({
       x: label,
       y: this.datesValue[index].map((date) => new Date(date).getTime()),
     }));
+    const earliest_start_date = Math.min.apply(
+      Math,
+      this.datesValue.map((a) => new Date(a[0]).getTime()),
+    );
+    const today = new Date().getTime();
 
     return {
       series: [
@@ -34,7 +39,7 @@ export default class extends Controller {
         },
       ],
       chart: {
-        height: 100 * this.labelsValue.length + 20,
+        height: 80 * this.labelsValue.length + 20,
         type: "rangeBar",
         animations: {
           enabled: false,
@@ -47,7 +52,7 @@ export default class extends Controller {
       },
       xaxis: {
         type: "datetime",
-        min: new Date().getTime(),
+        min: today < earliest_start_date ? today : earliest_start_date,
       },
       annotations: {
         xaxis: [

@@ -3,15 +3,32 @@
 
 %p#notice= notice
 
--# range_bar_series = [{name: 'Series A', data: { 'A' => [1,5] }}, {name: 'Series B', data: { 'B' => [2,4] }}, {name: 'Series C', data: { 'C' => [3,3] }}]
--#= range_bar_chart(range_bar_series)
 
 %div.bg-white.border{ data: { controller: 'timeline', turbo_cache: false, timeline_labels_value: [@project.name] , timeline_dates_value: [iso_date_range(@project)] } }
   %div{ data: { timeline_target: 'chart' } }
 
-%p
-  %b Name:
-  = @project.name
+%div.bg-white.border.my-3.p-3
+  - if @project.description.present?
+    %p.lead= @project.description
+
+  %strong Project lifecycle
+  %div
+    - if @project.start_date < Date.today
+      Started #{@project.start_date.to_fs(:long)} (#{time_ago_in_words(@project.start_date)} ago)
+    - elsif @project.start_date == Date.today
+      Starting today
+    - else
+      Starts #{@project.start_date.to_fs(:long)} (#{time_ago_in_words(@project.start_date)} from now)
+
+    with a duration of about #{distance_of_time_in_words(@project.start_date, @project.end_date)},
+
+    - if @project.end_date < Date.today
+      ending #{@project.end_date.to_fs(:long)} (#{time_ago_in_words(@project.end_date)} ago).
+    - elsif @project.end_date == Date.today
+      ending today.
+    - else
+      ending #{@project.end_date.to_fs(:long)} (#{time_ago_in_words(@project.end_date)} from now).
+
 %p
   %b Description:
   = @project.description
