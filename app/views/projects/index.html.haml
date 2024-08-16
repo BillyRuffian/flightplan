@@ -17,8 +17,8 @@
       %tr
         %td= project.name
         %td= project.description
-        %td= project.start_date
-        %td= project.end_date
+        %td= project.start_date.to_fs(:long)
+        %td= project.end_date.to_fs(:long)
         %td= link_to 'Show', project
         %td= link_to 'Edit', edit_project_path(project)
         %td= link_to 'Destroy', project, data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }

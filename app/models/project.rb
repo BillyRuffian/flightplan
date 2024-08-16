@@ -21,7 +21,8 @@
 #  user_id  (user_id => users.id)
 #
 class Project < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, inverse_of: :projects
+  has_many :milestones, dependent: :destroy, inverse_of: :project
 
   validates :name, presence: true
   validates :start_date, presence: true
@@ -32,7 +33,7 @@ class Project < ApplicationRecord
   def end_date_after_start_date
     return unless end_date && start_date
     if end_date < start_date
-      errors.add(:end_date, 'must be after the start date')
+      errors.add(:end_date, "must be after the start date")
     end
   end
 end

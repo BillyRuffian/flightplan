@@ -14,30 +14,47 @@
   %strong Project lifecycle
   %div
     - if @project.start_date < Date.today
-      Started #{@project.start_date.to_fs(:long)} (#{time_ago_in_words(@project.start_date)} ago)
+      Started #{@project.start_date.to_fs(:long)} (#{time_ago_in_words(@project.start_date)} ago),
+      = number_to_percentage(percentage_of_project_complete(@project), precision: 2)
+      complete,
     - elsif @project.start_date == Date.today
       Starting today
     - else
       Starts #{@project.start_date.to_fs(:long)} (#{time_ago_in_words(@project.start_date)} from now)
 
-    with a duration of about #{distance_of_time_in_words(@project.start_date, @project.end_date)},
-
     - if @project.end_date < Date.today
-      ending #{@project.end_date.to_fs(:long)} (#{time_ago_in_words(@project.end_date)} ago).
+      ending #{@project.end_date.to_fs(:long)} (#{time_ago_in_words(@project.end_date)} ago),
     - elsif @project.end_date == Date.today
-      ending today.
+      ending today,
     - else
-      ending #{@project.end_date.to_fs(:long)} (#{time_ago_in_words(@project.end_date)} from now).
+      ending #{@project.end_date.to_fs(:long)} (#{time_ago_in_words(@project.end_date)} from now),
 
-%p
-  %b Description:
-  = @project.description
-%p
-  %b Start date:
-  = @project.start_date
-%p
-  %b End date:
-  = @project.end_date
+    with a duration of about #{distance_of_time_in_words(@project.start_date, @project.end_date)}.
+
+  .mt-3
+    = link_to 'New Milestone', new_project_milestone_path(@project), class: 'btn btn-primary btn-sm'
+
+%div.bg-white.border.my-3.p-3
+  %h3 Milestones
+  - if @project.milestones.any?
+    %table.table.table-sm.table-striped
+      %thead
+        %tr
+          %th Name
+          %th Date
+          %th Actions
+      %tbody
+        - @project.milestones.each do |milestone|
+          %tr
+            %td= milestone.name
+            %td= milestone.start_date&.to_fs(:long)
+            %td
+              = link_to 'Show', project_milestone_path(@project, milestone), class: 'btn btn-primary btn-sm'
+              = link_to 'Edit', edit_project_milestone_path(@project, milestone), class: 'btn btn-secondary btn-sm'
+              = link_to 'Destroy', project_milestone_path(@project, milestone), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
+  - else
+    %p No milestones yet.
+
 
 = link_to 'Edit', edit_project_path(@project)
 \|

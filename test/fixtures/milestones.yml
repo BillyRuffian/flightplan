@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: milestones
+#
+#  id          :integer          not null, primary key
+#  description :text
+#  end_date    :date
+#  name        :string
+#  start_date  :date
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  project_id  :integer          not null
+#
+# Indexes
+#
+#  index_milestones_on_project_id  (project_id)
+#
+# Foreign Keys
+#
+#  project_id  (project_id => projects.id)
+#
+
+one:
+  name: MyString
+  start_date: 2024-08-16
+  end_date: 2024-08-16
+  project: one
+  description: MyText
+
+two:
+  name: MyString
+  start_date: 2024-08-16
+  end_date: 2024-08-16
+  project: two
+  description: MyText
