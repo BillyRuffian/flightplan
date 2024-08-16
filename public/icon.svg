@@ -7,7 +7,7 @@
 <rect height="150" width="150" x="0" y="0"/>
 </clipPath>
 <g clip-path="url(#ArtboardFrame)" id="Untitled" vectornator:layerName="Untitled">
-<path d="M5 1.0376e-06L145 1.0376e-06C146.429 1.0376e-06 147.719 0.59978 148.63 1.56139C149.479 2.45754 150 3.66794 150 5L150 145C150 147.761 147.761 150 145 150L5 150C2.23858 150-3.55271e-15 147.761-3.55271e-15 145L-3.55271e-15 5C-3.55271e-15 2.23858 2.23858 1.0376e-06 5 1.0376e-06Z" fill="#007cff" fill-rule="nonzero" opacity="1" stroke="#00a0fa" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="1" vectornator:layerName="rect"/>
+<path d="M0 20C0 8.95431 8.95431 1.0376e-06 20 1.0376e-06L130 1.0376e-06C141.046 1.0376e-06 150 8.95431 150 20L150 130C150 141.046 141.046 150 130 150L20 150C8.95431 150 0 141.046 0 130L0 20Z" fill="#007cff" fill-rule="nonzero" opacity="1" stroke="none" vectornator:layerName="Rectangle 1"/>
 <path d="M26.6396 77.9542L110.998 77.9542" fill="#ffffff" fill-rule="nonzero" opacity="1" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="miter" stroke-width="40" vectornator:layerName="path"/>
 <path d="M20.1178 77.9542L85.2198 77.9542" fill="#ffffff" fill-rule="nonzero" opacity="1" stroke="#ffffff" stroke-linecap="square" stroke-linejoin="miter" stroke-width="40" vectornator:layerName="path"/>
 <path d="M18.1085 58.1458L61.2628 98.836L18.1085 98.836L18.1085 58.1458Z" fill="#007cff" fill-rule="nonzero" opacity="1" stroke="#0095ff" stroke-linecap="butt" stroke-linejoin="miter" stroke-opacity="0" stroke-width="1" vectornator:layerName="path"/>

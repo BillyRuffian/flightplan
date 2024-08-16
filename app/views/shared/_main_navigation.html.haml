@@ -1,7 +1,7 @@
 .container
   .d-flex.flex-wrap.align-items-center.justify-content-center.justify-content-lg-start
     = link_to root_path, class: 'd-flex align-items-center mb-lg-0 link-body-emphasis text-decoration-none me-4' do
-      -# = image_tag 'nucleotide.svg', class: 'me-2', role: 'img', aria: {label: 'Yarp swan logo'}, width: 32
+      = image_tag '/icon.svg', class: 'me-2', role: 'img', aria: {label: 'Yarp swan logo'}, width: 32
       %span.fs-4 Flightplan
     %ul.nav.col-12.col-lg-auto.me-lg-auto.mb-2.justify-content-center.mb-md-0
       %li.nav-link.px-2.link-body-emphasis= link_to 'Projects', projects_path
