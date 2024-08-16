@@ -12,11 +12,13 @@ export default class extends Controller {
 
   connect() {
     console.log("Connected to timeline controller");
-  }
 
-  initialize() {
     this.chart = new ApexCharts(this.chartTarget, this.chartOptions);
     this.chart.render();
+  }
+
+  disconnect() {
+    this.chart.destroy();
   }
 
   get chartOptions() {

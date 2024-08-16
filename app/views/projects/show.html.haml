@@ -6,7 +6,7 @@
 -# range_bar_series = [{name: 'Series A', data: { 'A' => [1,5] }}, {name: 'Series B', data: { 'B' => [2,4] }}, {name: 'Series C', data: { 'C' => [3,3] }}]
 -#= range_bar_chart(range_bar_series)
 
-%div.bg-white.border{ data: { controller: 'timeline', timeline_labels_value: [@project.name] , timeline_dates_value: [iso_date_range(@project)] } }
+%div.bg-white.border{ data: { controller: 'timeline', turbo_cache: false, timeline_labels_value: [@project.name] , timeline_dates_value: [iso_date_range(@project)] } }
   %div{ data: { timeline_target: 'chart' } }
 
 %p
