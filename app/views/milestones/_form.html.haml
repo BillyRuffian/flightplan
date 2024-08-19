@@ -16,13 +16,8 @@
     = f.label :name
     = f.text_field :name, class: 'form-control'
   .mt-3
-    .row
-      .col
-        = f.label :start_date
-        = f.date_field :start_date, class: 'form-control'
-      .col
-        = f.label :end_date
-        = f.date_field :end_date, class: 'form-control'
+    = f.label :start_date
+    = f.date_field :start_date, class: 'form-control'
   .mt-3
     = f.label :description
     = f.text_area :description, class: 'form-control'

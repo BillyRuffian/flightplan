@@ -49,9 +49,10 @@
             %td= link_to milestone.name, project_milestone_path(@project, milestone)
             %td= milestone.start_date&.to_fs(:long)
             %td
-
-              = link_to 'Edit', edit_project_milestone_path(@project, milestone), class: 'btn btn-secondary btn-sm'
-              = link_to 'Destroy', project_milestone_path(@project, milestone), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'
+              = link_to edit_project_milestone_path(@project, milestone), class: 'btn btn-outline-primary btn-sm me-2' do
+                %i.bi-pencil
+              = link_to project_milestone_path(@project, milestone), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm me-2' do
+                %i.bi-trash
   - else
     %p No milestones yet.
 
