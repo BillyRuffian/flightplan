@@ -23,6 +23,7 @@
 class Project < ApplicationRecord
   belongs_to :user, inverse_of: :projects
   has_many :milestones, dependent: :destroy, inverse_of: :project
+  has_many :reminders, dependent: :destroy, inverse_of: :project
 
   validates :name, presence: true
   validates :start_date, presence: true

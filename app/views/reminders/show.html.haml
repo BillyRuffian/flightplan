@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Project:
+  = @reminder.project
+%p
+  %b Start date:
+  = @reminder.start_date
+%p
+  %b Topic:
+  = @reminder.topic
+
+= link_to 'Edit', edit_reminder_path(@reminder)
+\|
+= link_to 'Back', reminders_path

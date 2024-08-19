@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :milestones, except: [ :index ]
+    resources :reminders, except: [ :index ]
   end
 
   devise_for :users
