@@ -4,7 +4,14 @@
 %p#notice= notice
 
 
-%div.bg-white.border{ data: { controller: 'timeline', turbo_cache: false, timeline_labels_value: [@project.name] , timeline_dates_value: [iso_date_range(@project)] } }
+%div.bg-white.border{
+  data: {
+    controller: 'timeline',
+    turbo_cache: false,
+    timeline_labels_value: [@project.name],
+    timeline_dates_value: [iso_date_range(@project)],
+    timeline_milestones_value: [@project.milestones.map { |m| m.start_date.iso8601}]
+  } }
   %div{ data: { timeline_target: 'chart' } }
 
 %div.bg-white.border.my-3.p-3

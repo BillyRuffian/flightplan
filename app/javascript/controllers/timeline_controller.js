@@ -8,6 +8,7 @@ export default class extends Controller {
   static values = {
     labels: Array,
     dates: Array,
+    milestones: Array,
   };
 
   connect() {
@@ -25,13 +26,10 @@ export default class extends Controller {
     const series_data = this.labelsValue.map((label, index) => ({
       x: label,
       y: this.datesValue[index].map((date) => new Date(date).getTime()),
-      goals: [
-        {
-          name: "Break",
-          value: new Date("2024-09-01").getTime(),
-          strokeColor: "#fff",
-        },
-      ],
+      goals: this.milestonesValue[index].map((m) => ({
+        value: new Date(m).getTime(),
+        strokeColor: "#FFC300",
+      })),
     }));
     const earliest_start_date = Math.min.apply(
       Math,
@@ -65,7 +63,7 @@ export default class extends Controller {
         xaxis: [
           {
             x: new Date().getTime(),
-            strokeDashArray: 3,
+            strokeDashArray: 0,
             borderColor: "#f00",
             label: {
               borderColor: "#775DD0",
