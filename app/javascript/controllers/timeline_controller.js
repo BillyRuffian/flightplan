@@ -25,6 +25,13 @@ export default class extends Controller {
     const series_data = this.labelsValue.map((label, index) => ({
       x: label,
       y: this.datesValue[index].map((date) => new Date(date).getTime()),
+      goals: [
+        {
+          name: "Break",
+          value: new Date("2024-09-01").getTime(),
+          strokeColor: "#fff",
+        },
+      ],
     }));
     const earliest_start_date = Math.min.apply(
       Math,
