@@ -1,4 +1,10 @@
 
+%p
+  Project begins
+  = @project.start_date.to_formatted_s(:long)
+  and ends
+  = @project.end_date.to_formatted_s(:long)
+
 = render 'form'
 
 -#= link_to 'Back', milestones_path
