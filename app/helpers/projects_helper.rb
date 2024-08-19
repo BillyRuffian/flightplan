@@ -13,4 +13,14 @@ module ProjectsHelper
     percentage = 100 if percentage > 100
     percentage
   end
+
+  def activity_class(activity)
+    if activity.start_date < Date.today
+      'table-secondary'
+    elsif activity.start_date == Date.today
+      'table-success'
+    else
+      nil
+    end
+  end
 end

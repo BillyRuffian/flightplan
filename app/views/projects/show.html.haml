@@ -43,16 +43,11 @@
 
 %div.bg-white.border.my-3.p-3
   %h3 Milestones
-  - if @project.milestones.any?
-    %table.table.table-sm.table-striped
-      %thead
-        %tr
-          %th Name
-          %th Date
-          %th Actions
+  - if @milestones.any?
+    %table.table
       %tbody
-        - @project.milestones.each do |milestone|
-          %tr
+        - @milestones.each do |milestone|
+          %tr{ class: activity_class(milestone) }
             %td= link_to milestone.name, project_milestone_path(@project, milestone)
             %td= milestone.start_date&.to_fs(:long)
             %td
