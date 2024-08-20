@@ -3,8 +3,8 @@
 # Table name: reminders
 #
 #  id         :integer          not null, primary key
+#  name       :string
 #  start_date :date
-#  topic      :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  project_id :integer          not null

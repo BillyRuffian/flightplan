@@ -39,7 +39,8 @@
     with a duration of about #{distance_of_time_in_words(@project.start_date, @project.end_date)}.
 
   .mt-3
-    = link_to 'New Milestone', new_project_milestone_path(@project), class: 'btn btn-primary btn-sm'
+    = link_to 'New Milestone', new_project_milestone_path(@project), class: 'btn btn-primary btn-sm me-3'
+    = link_to 'New Reminder', new_project_reminder_path(@project), class: 'btn btn-primary btn-sm me-3'
 
 %div.bg-white.border.my-3.p-3
   %h3 Milestones
@@ -58,6 +59,22 @@
   - else
     %p No milestones yet.
 
+%div.bg-white.border.my-3.p-3
+  %h3 Reminders
+  - if @reminders.any?
+    %table.table
+      %tbody
+        - @reminders.each do |reminder|
+          %tr{ class: activity_class(reminder) }
+            %td= link_to reminder.name, project_reminder_path(@project, reminder)
+            %td= reminder.start_date&.to_fs(:long)
+            %td
+              = link_to edit_project_reminder_path(@project, reminder), class: 'btn btn-outline-primary btn-sm me-2' do
+                %i.bi-pencil
+              = link_to project_reminder_path(@project, reminder), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm me-2' do
+                %i.bi-trash
+  - else
+    %p No milestones yet.
 
 = link_to 'Edit', edit_project_path(@project)
 \|

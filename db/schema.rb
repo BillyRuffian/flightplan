@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_19_175327) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_20_111736) do
   create_table "milestones", force: :cascade do |t|
     t.string "name"
     t.date "start_date"
@@ -37,9 +37,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_19_175327) do
   create_table "reminders", force: :cascade do |t|
     t.integer "project_id", null: false
     t.date "start_date"
-    t.text "topic"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["project_id"], name: "index_reminders_on_project_id"
   end
 
