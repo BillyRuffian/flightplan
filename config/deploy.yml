@@ -13,7 +13,7 @@ servers:
       traefik.http.routers.flightplan.entrypoints: websecure
       traefik.http.routers.flightplan.rule: Host(`flightplan.glorious.io`)
       traefik.http.routers.flightplan.tls.certresolver: letsencrypt
-    cmd: bash -c "cat config/crontab | crontab - && cron -f"
+    # cmd: bash -c "cat config/crontab | crontab - && cron -f"
 
 # Credentials for your image host.
 registry:
