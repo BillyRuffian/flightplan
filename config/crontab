@@ -1,1 +1,1 @@
-30 16 * * * /rails/bin/rails runner "puts 'hello from uranus'"
+45 16 * * * /rails/bin/rails runner "puts 'hello from uranus'"
