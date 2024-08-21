@@ -16,7 +16,7 @@ servers:
   cron:
     hosts:
       - 135.181.254.19
-    cmd: bash -c "cat config/crontab | crontab - && declare -p | grep -Ev '\b(BASHOPTS|BASH_VERSINFO|EUID|PPID|SHELLOPTS|UID)\b' >> /rails/.cron.env && cron -f"
+    cmd: bash -c "cat config/crontab | crontab - && cron -f"
 
 # Credentials for your image host.
 registry:
