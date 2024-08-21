@@ -1,1 +1,1 @@
-25 16 * * * /rails/bin/rails runner "Rails.logger.warn 'This is a test cron job'"
+30 16 * * * /rails/bin/rails runner "puts 'hello from uranus'"
