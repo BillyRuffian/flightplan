@@ -38,7 +38,7 @@ RUN apt-get update \
   && which cron \
   && rm -rf /etc/cron.*/*
 
-COPY config/app.crontab /etc/cron.d/cronfile
+COPY config/crontab /etc/cron.d/cronfile
 RUN chmod 0644 /etc/cron.d/cronfile
 RUN crontab /etc/cron.d/cronfile
 
