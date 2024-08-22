@@ -1,1 +1,1 @@
-*/15 * * * * /rails/bin/cron-executor.sh ls -l
+*/15 * * * * /rails/bin/cron-executor.sh bin/rails runner -e production 'puts User.first'
