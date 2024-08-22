@@ -13,7 +13,7 @@ WORKDIR /rails
 
 # Install base packages
 RUN apt-get update -qq && \
-  apt-get install --no-install-recommends -y curl libjemalloc2 libsqlite3-0 libvips cron && \
+  apt-get install --no-install-recommends -y curl libjemalloc2 libsqlite3-0 libvips && \
   rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Set production environment
@@ -29,6 +29,18 @@ FROM base AS build
 RUN apt-get update -qq && \
   apt-get install --no-install-recommends -y build-essential git node-gyp pkg-config python-is-python3 && \
   rm -rf /var/lib/apt/lists /var/cache/apt/archives
+
+# Install cron
+RUN apt-get update \
+  && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install -y cron \
+  # Remove package lists for smaller image sizes
+  && rm -rf /var/lib/apt/lists/* \
+  && which cron \
+  && rm -rf /etc/cron.*/*
+
+COPY config/app.crontab /etc/cron.d/cronfile
+RUN chmod 0644 /etc/cron.d/cronfile
+RUN crontab /etc/cron.d/cronfile
 
 # Install JavaScript dependencies
 ARG NODE_VERSION=21.7.2
@@ -73,7 +85,9 @@ COPY --from=build /rails /rails
 RUN groupadd --system --gid 1000 rails && \
   useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
   chown -R rails:rails db log storage tmp
-USER 1000:1000
+# USER 1000:1000
+
+USER root
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
