@@ -22,18 +22,24 @@ ENV RAILS_ENV="production" \
   BUNDLE_PATH="/usr/local/bundle" \
   BUNDLE_WITHOUT="development"
 
+# Install cron
+RUN apt-get update -qq \
+  && apt-get install -y --no-install-recommends -y cron \
+  && rm -rf /var/lib/apt/lists/* \
+  && which cron \
+  && rm -rf /etc/cron.*/*
+
+COPY config/crontab /etc/cron.d/cronfile
+RUN chmod 0644 /etc/cron.d/cronfile
+RUN crontab /etc/cron.d/cronfile
+
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
-  apt-get install --no-install-recommends -y build-essential git node-gyp pkg-config python-is-python3 cron && \
+  apt-get install --no-install-recommends -y build-essential git node-gyp pkg-config python-is-python3 && \
   rm -rf /var/lib/apt/lists /var/cache/apt/archives
-
-
-COPY config/crontab /etc/cron.d/cronfile
-RUN chmod 0644 /etc/cron.d/cronfile
-RUN crontab /etc/cron.d/cronfile
 
 # Install JavaScript dependencies
 ARG NODE_VERSION=21.7.2
