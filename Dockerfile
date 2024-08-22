@@ -31,8 +31,8 @@ RUN apt-get update -qq && \
   rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install cron
-RUN apt-get update \
-  && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends install -y cron \
+RUN apt-get update -qq \
+  && apt-get install -y --no-install-recommends -y cron \
   && rm -rf /var/lib/apt/lists/* \
   && which cron \
   && rm -rf /etc/cron.*/*
