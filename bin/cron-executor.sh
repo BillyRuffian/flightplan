@@ -1,5 +1,6 @@
 #!/bin/bash -e
 
+
 PATH=$PATH:/usr/local/bin
 
 cd /rails || exit
