@@ -24,7 +24,15 @@ module Flightplan
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    config.action_mailer.delivery_method = :postmark
-    config.action_mailer.postmark_settings = { api_token: Rails.application.credentials.dig(:postmark, :key) }
+    config.action_mailer.delivery_method = :smtp
+    ActionMailer::Base.smtp_settings = {
+      user_name: 'apikey', # This is the string literal 'apikey', NOT the ID of your API key
+      password: Rails.application.credentials.dig(:send_grid, :key), # This is the secret sendgrid API key which was issued during API key creation
+      domain: 'glorious.io',
+      address: 'smtp.sendgrid.net',
+      port: 587,
+      authentication: :plain,
+      enable_starttls_auto: true
+    }
   end
 end
