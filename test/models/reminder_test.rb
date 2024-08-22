@@ -4,6 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  name       :string
+#  notified   :boolean          default(FALSE), not null
 #  start_date :date
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

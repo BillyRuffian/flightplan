@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %h1 Flightplan reminder
+    %p
+      This is your reminder for the project:
+      %strong= @project.name
+    %p
+      %blockquote= @reminder.name
+      Due
+      %strong= @project.start_date.to_formatted_s(:long)
+    %p
+      = link_to 'View project', project_url(@project)

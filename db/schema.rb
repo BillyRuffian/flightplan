@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_08_20_111736) do
+ActiveRecord::Schema[7.2].define(version: 2024_08_22_103831) do
   create_table "milestones", force: :cascade do |t|
     t.string "name"
     t.date "start_date"
@@ -40,6 +40,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_20_111736) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.boolean "notified", default: false, null: false
     t.index ["project_id"], name: "index_reminders_on_project_id"
   end
 
