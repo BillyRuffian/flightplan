@@ -29,10 +29,6 @@ RUN apt-get update -qq \
   && which cron \
   && rm -rf /etc/cron.*/*
 
-COPY config/crontab /etc/cron.d/cronfile
-RUN chmod 0644 /etc/cron.d/cronfile
-RUN crontab /etc/cron.d/cronfile
-
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
@@ -65,6 +61,10 @@ COPY . .
 
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
+
+COPY config/crontab /etc/cron.d/cronfile
+RUN chmod 0644 /etc/cron.d/cronfile
+RUN crontab /etc/cron.d/cronfile
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
