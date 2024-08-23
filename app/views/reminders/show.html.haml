@@ -8,8 +8,8 @@
   = @reminder.start_date
 %p
   %b Topic:
-  = @reminder.topic
+  = @reminder.name
 
-= link_to 'Edit', edit_reminder_path(@reminder)
+= link_to 'Edit', edit_project_reminder_path(@project,@reminder)
 \|
 = link_to 'Back', project_path(@project)
