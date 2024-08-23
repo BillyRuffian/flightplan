@@ -13,14 +13,15 @@ servers:
       traefik.http.routers.flightplan.entrypoints: websecure
       traefik.http.routers.flightplan.rule: Host(`flightplan.glorious.io`)
       traefik.http.routers.flightplan.tls.certresolver: letsencrypt
+      web_host: 135.181.254.19
   jobs:
     hosts:
-      - web
+      - web_host
     cmd: bundle exec rake solid_queue:start
   #  From : https://glaucocustodio.github.io/2024/01/23/migrating-from-dokku-to-kamal-scheduling-cron-jobs/
   cron:
     hosts:
-      - web
+      - web_host
     cmd: bash -c "cron -f -L 2"
 
 # Credentials for your image host.
