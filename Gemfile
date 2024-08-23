@@ -66,3 +66,5 @@ gem 'kamal', '~> 1.8'
 gem 'postmark-rails', '~> 0.22.1'
 
 gem 'solid_queue', '~> 0.6.0'
+
+gem "pundit", "~> 2.3"

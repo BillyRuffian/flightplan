@@ -1,0 +1,22 @@
+- content_for :section do
+  %h1
+    %span.badge.text-bg-danger Admin
+    Users
+
+%table.table
+  %thead
+    %tr
+      %th Email
+      %th Created At
+      %th Updated At
+      %th Actions
+  %tbody
+    - @users.each do |user|
+      %tr
+        %td= user.email
+        %td= user.created_at.to_fs(:long)
+        %td= user.updated_at.to_fs(:long)
+        %td
+          link_to 'Show', user
+          link_to 'Edit', edit_user_path(user)
+          link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' }
