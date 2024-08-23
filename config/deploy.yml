@@ -15,12 +15,12 @@ servers:
       traefik.http.routers.flightplan.tls.certresolver: letsencrypt
   jobs:
     hosts:
-      - 135.181.254.19
+      - web
     cmd: bundle exec rake solid_queue:start
   #  From : https://glaucocustodio.github.io/2024/01/23/migrating-from-dokku-to-kamal-scheduling-cron-jobs/
   cron:
     hosts:
-      - 135.181.254.19
+      - web
     cmd: bash -c "cron -f -L 2"
 
 # Credentials for your image host.
