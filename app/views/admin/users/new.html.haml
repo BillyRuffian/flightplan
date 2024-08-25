@@ -1,0 +1,15 @@
+- content_for :section do
+  %h1 Invite a New User
+
+= form_for [:admin, @user] do |f|
+  - if @user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@project.errors.count, "error")} prohibited this project from being saved:"
+        - @project.errors.full_messages.each do |message|
+          %li= message
+
+  .mb-3
+    = f.label :email
+    = f.text_field :email, class: "form-control"
+  .actions
+    = f.submit "Invite User", class: "btn btn-primary"

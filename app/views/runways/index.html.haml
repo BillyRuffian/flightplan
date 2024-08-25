@@ -3,13 +3,15 @@
 
 %p#notice= notice
 
-
-%div.bg-white.border{
-  data: {
-    controller: 'timeline',
-    turbo_cache: false,
-    timeline_labels_value: @projects.map(&:name) ,
-    timeline_dates_value: @projects.map { |p| iso_date_range(p) },
-    timeline_milestones_value: @projects.map { |p| p.milestones.map { |m| m.start_date&.iso8601 } }.map { |v| v.nil? ? [] : v },
-  } }
-  %div{ data: { timeline_target: 'chart' } }
+- if @projects.any?
+  %div.bg-white.border{
+    data: {
+      controller: 'timeline',
+      turbo_cache: false,
+      timeline_labels_value: @projects.map(&:name) ,
+      timeline_dates_value: @projects.map { |p| iso_date_range(p) },
+      timeline_milestones_value: @projects.map { |p| p.milestones.map { |m| m.start_date&.iso8601 } }.map { |v| v.nil? ? [] : v },
+    } }
+    %div{ data: { timeline_target: 'chart' } }
+- else
+  %p No projects found
