@@ -65,6 +65,6 @@ gem 'haml-rails', '~> 2.1'
 gem 'kamal', '~> 1.8'
 gem 'postmark-rails', '~> 0.22.1'
 
-gem 'solid_queue', '~> 0.6.0'
+gem 'solid_queue', '~> 0.6.1'
 
 gem 'pundit', '~> 2.4'
