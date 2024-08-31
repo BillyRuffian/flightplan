@@ -19,6 +19,8 @@
 #  project_id  (project_id => projects.id)
 #
 class Reminder < ApplicationRecord
+  include Eventable
+
   belongs_to :project, inverse_of: :reminders
 
   validates :name, presence: true

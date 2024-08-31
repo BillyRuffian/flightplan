@@ -1,0 +1,17 @@
+-# locals: (event:)
+- event = event.transform_keys(&:to_sym)
+
+.bg-white.shadow-sm.p-3.border.border-light-subtle
+  .d-flex.flex-row
+    .me-2
+      - case event[:type]
+      - when 'project'
+        %i.bi.bi-box
+      - when 'milestone'
+        %i.bi.bi-flag
+      - when 'reminder'
+        %i.bi.bi-calendar-check
+    .me-1
+      = Date.parse(event[:start_date]).to_formatted_s(:long)
+    .me-1.me-auto
+      = event[:name]

@@ -67,6 +67,6 @@ gem 'postmark-rails', '~> 0.22.1'
 
 gem 'solid_queue', '~> 0.6.0'
 
-gem 'pundit', '~> 2.3'
 
-gem "devise_invitable", "~> 2.0"
+gem 'devise_invitable', '~> 2.0'
+gem 'pundit', '~> 2.4'

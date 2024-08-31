@@ -21,6 +21,8 @@
 #  user_id  (user_id => users.id)
 #
 class Project < ApplicationRecord
+  include Eventable
+
   belongs_to :user, inverse_of: :projects
   has_many :milestones, dependent: :destroy, inverse_of: :project
   has_many :reminders, dependent: :destroy, inverse_of: :project

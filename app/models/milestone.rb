@@ -20,6 +20,8 @@
 #  project_id  (project_id => projects.id)
 #
 class Milestone < ApplicationRecord
+  include Eventable
+
   belongs_to :project, inverse_of: :milestones
   validates :name, presence: true
   validates :start_date, presence: true

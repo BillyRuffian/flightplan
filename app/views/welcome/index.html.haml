@@ -1,5 +1,8 @@
 - content_for :section do
-  %h1 all the good things we do
+  Crystal Ball
 
-%p
-  There are sometimes when you need to just throw a bunch of stuff on a page and see what it looks like. This is one of those times. So here is a bunch of stuff.
+- if @events.any?
+  = render partial: 'event', collection: @events
+
+- else
+  %p Nothing coming up in your future.
