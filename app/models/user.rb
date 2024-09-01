@@ -33,7 +33,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable,
          :recoverable, :rememberable, :validatable,
-         :registerable, :trackable
+         :registerable
 
   has_many :projects, dependent: :destroy, inverse_of: :user
 end
