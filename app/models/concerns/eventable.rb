@@ -2,7 +2,7 @@ module Eventable
   extend ActiveSupport::Concern
 
   included do
-    scope :timeline, ->(from_date = Date.today) { select("id, start_date, name, '#{name.downcase}' as type")
-                                                 .where('start_date >= ?', from_date) }
+    scope :timeline, ->(from_date = Date.today) { select("#{name.pluralize}.id, #{name.pluralize}.start_date, #{name.pluralize}.name, '#{name.downcase}' as type")
+                                                 .where("#{name.pluralize}.start_date >= ?", from_date) }
   end
 end

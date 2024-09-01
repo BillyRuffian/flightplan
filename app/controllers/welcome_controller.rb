@@ -3,11 +3,11 @@ class WelcomeController < ApplicationController
 
   def index
     @events =ApplicationRecord.connection.execute(<<-SQL)
-      #{Project.timeline.to_sql}
+      #{current_user.projects.timeline.to_sql}
       UNION
-      #{Milestone.timeline.to_sql}
+      #{current_user.milestones.timeline.to_sql}
       UNION
-      #{Reminder.timeline.to_sql}
+      #{current_user.reminders.timeline.to_sql}
       ORDER BY start_date
     SQL
   end

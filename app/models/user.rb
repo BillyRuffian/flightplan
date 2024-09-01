@@ -36,4 +36,6 @@ class User < ApplicationRecord
          :registerable
 
   has_many :projects, dependent: :destroy, inverse_of: :user
+  has_many :milestones, through: :projects
+  has_many :reminders, through: :projects
 end
