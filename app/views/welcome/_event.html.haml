@@ -1,17 +1,25 @@
 -# locals: (event:)
-- event = event.transform_keys(&:to_sym)
 
-.bg-white.shadow-sm.p-3.border.border-light-subtle
-  .d-flex.flex-row
-    .me-2
-      - case event[:type]
-      - when 'project'
+.bg-white.shadow-sm.p-3.border.border-light-subtle.position-relative
+  .row.align-items-center
+    .col
+      - case event
+      - when Project
         %i.bi.bi-box
-      - when 'milestone'
+      - when Milestone
         %i.bi.bi-flag
-      - when 'reminder'
+      - when Reminder
         %i.bi.bi-calendar-check
-    .me-1
-      = Date.parse(event[:start_date]).to_formatted_s(:long)
-    .me-1.me-auto
-      = event[:name]
+
+    .col
+      .row
+        %div= event.start_date.to_formatted_s(:short)
+      .row
+        %small.text-muted= distance_of_time_in_words_to_now(event.start_date)
+
+    .col-9
+      - if !event.is_a?(Project)
+        %strong
+          %small= event.project.name
+      .row
+        %div= link_to event.name, project_path(event.is_a?(Project) ? event : event.project), class: 'stretched-link'
