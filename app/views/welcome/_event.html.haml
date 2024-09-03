@@ -2,7 +2,7 @@
 
 .bg-white.shadow-sm.p-3.border.border-light-subtle.position-relative
   .row.align-items-center
-    .col
+    .col.flex-grow.text-center
       - case event
       - when Project
         %i.bi.bi-box
@@ -11,15 +11,18 @@
       - when Reminder
         %i.bi.bi-calendar-check
 
-    .col
+    .col-2.flex-grow.align-items-center
       .row
         %div= event.start_date.to_formatted_s(:short)
       .row
         %small.text-muted= distance_of_time_in_words_to_now(event.start_date)
 
-    .col-9
+    .col-9.flex-fill
       - if !event.is_a?(Project)
         %strong
           %small= event.project.name
+      - else
+        %strong
+          %small Project starts
       .row
         %div= link_to event.name, project_path(event.is_a?(Project) ? event : event.project), class: 'stretched-link'

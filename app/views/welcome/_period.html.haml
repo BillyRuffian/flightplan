@@ -1,0 +1,6 @@
+-# locals: (period:)
+
+.mb-4
+  %h5= period.first.strftime('Wk %V, %d %B, %Y')
+
+  = render partial: 'event', collection: period.last, as: :event

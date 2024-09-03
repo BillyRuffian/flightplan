@@ -130,6 +130,8 @@ GEM
       raabro (~> 1.4)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    groupdate (6.4.0)
+      activesupport (>= 6.1)
     haml (6.3.0)
       temple (>= 0.8.2)
       thor
@@ -408,6 +410,7 @@ DEPENDENCIES
   devise (~> 4.9)
   devise_invitable (~> 2.0)
   erb2haml (~> 0.1.5)
+  groupdate (~> 6.4)
   haml-rails (~> 2.1)
   importmap-rails
   jbuilder

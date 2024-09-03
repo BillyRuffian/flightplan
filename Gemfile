@@ -70,3 +70,5 @@ gem 'solid_queue', '~> 0.6.0'
 
 gem 'devise_invitable', '~> 2.0'
 gem 'pundit', '~> 2.4'
+
+gem "groupdate", "~> 6.4"
